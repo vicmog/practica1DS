@@ -1,4 +1,4 @@
-from bicicleta import Bicicleta
+from src.bicicleta import Bicicleta
 
 
 class BicicletaCarretera(Bicicleta):

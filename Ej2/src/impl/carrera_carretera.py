@@ -1,4 +1,4 @@
-from carrera import Carrera
+from src.carrera import Carrera
 
 
 class CarreraCarretera(Carrera):

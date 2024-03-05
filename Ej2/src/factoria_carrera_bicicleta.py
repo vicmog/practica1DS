@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from bicicleta import Bicicleta
+from src.bicicleta import Bicicleta
 
-from carrera import Carrera
+from src.carrera import Carrera
 
 
 class FactoriaCarreraYBicicleta(ABC):

@@ -1,6 +1,6 @@
-from impl.bicicleta_montana import BicicletaMontana
-from impl.carrera_montana import CarreraMontana
-from factoria_carrera_bicicleta import FactoriaCarreraYBicicleta
+from src.impl.bicicleta_montana import BicicletaMontana
+from src.impl.carrera_montana import CarreraMontana
+from src.factoria_carrera_bicicleta import FactoriaCarreraYBicicleta
 
 
 class FactoriaMontana(FactoriaCarreraYBicicleta):
