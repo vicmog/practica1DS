@@ -1,0 +1,7 @@
+{
+	"executionEnvironments": [
+		{
+			"root": "src"
+		} // Replace "src" with your actual root path
+	]
+}
