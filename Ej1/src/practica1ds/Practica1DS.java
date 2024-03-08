@@ -8,13 +8,19 @@ package practica1ds;
  *
  * @author victo
  */
-public class Practica1DS {
+public class Practica1DS extends Thread {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        FactoriaMontana factoriaMontana = new FactoriaMontana();
+        FactoriaCarretera factoriaCarretera = new FactoriaCarretera();
+
+        Carrera carreraMontana = factoriaMontana.crearCarrera();
+        Carrera carreraCarretera = factoriaCarretera.crearCarrera();
+
     }
-    
+
 }

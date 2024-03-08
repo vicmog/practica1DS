@@ -9,4 +9,16 @@ public abstract class Bicicleta {
         this.tipo = tipo;
         this.identificador = identificador;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public String toString() {
+        return "Bicicleta " + tipo + " " + identificador;
+    }
 }
