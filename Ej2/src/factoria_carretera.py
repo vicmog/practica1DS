@@ -1,5 +1,5 @@
-from impl.bicicleta_carretera import BicicletaCarretera
-from impl.carrera_carretera import CarreraCarretera
+from src.impl.bicicleta_carretera import BicicletaCarretera
+from src.impl.carrera_carretera import CarreraCarretera
 
 
 class FactoriaCarretera:
@@ -7,7 +7,7 @@ class FactoriaCarretera:
         self.num_bicicletas = 0
 
     def crear_carrera(self):
-        return CarreraCarretera
+        return CarreraCarretera()
 
     def crear_bicicleta(self):
         identificador = self.num_bicicletas

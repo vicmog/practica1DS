@@ -4,11 +4,11 @@ from abc import ABC
 class Bicicleta(ABC):
 
     def __init__(self, identificador, tipo):
-        self.__identificador = identificador
-        self.__tipo = tipo
+        self._identificador = identificador
+        self._tipo = tipo
 
     def get_identificador(self):
-        return self.identificador
+        return self._identificador
     
     def get_tipo(self):
-        return self.tipo
+        return self._tipo
