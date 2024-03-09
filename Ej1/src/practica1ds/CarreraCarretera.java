@@ -10,7 +10,7 @@ public class CarreraCarretera extends Carrera {
     public void run() {
         try {
             System.out.println("Empieza la Carrera de carretera con " + bicicletas.size() + " bicicletas\n");
-            sleep(6000);
+            Thread.sleep(6000);
             for (int i = 0; i < bicicletas.size() * 0.10; i++) {
                 retirarBicicletaAleatoria();
             }

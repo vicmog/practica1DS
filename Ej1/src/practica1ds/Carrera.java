@@ -2,7 +2,7 @@ package practica1ds;
 
 import java.util.ArrayList;
 
-public abstract class Carrera extends Thread {
+public abstract class Carrera implements Runnable {
     protected String tipo;
     protected ArrayList<Bicicleta> bicicletas;
 

@@ -4,8 +4,6 @@
  */
 package practica1ds;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author victo
@@ -30,8 +28,11 @@ public class Practica1DS extends Thread {
             carreraMontana.agregarBicicleta(factoriaCarretera.crearBicicleta("bciM" + i));
         }
 
-        carreraCarretera.run();
-        carreraMontana.run();
+        Thread hiloCarreraMontana = new Thread(carreraMontana);
+        Thread hiloCarreraCarretera = new Thread(carreraCarretera);
+
+        hiloCarreraMontana.start();
+        hiloCarreraCarretera.start();
 
     }
 
