@@ -4,7 +4,20 @@ public class CarreraCarretera extends Carrera {
 
     public CarreraCarretera(String tipo) {
         super(tipo);
-        // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public void run() {
+        try {
+            System.out.println("Empieza la Carrera de carretera con " + bicicletas.size() + " bicicletas\n");
+            sleep(6000);
+            for (int i = 0; i < bicicletas.size() * 0.10; i++) {
+                retirarBicicletaAleatoria();
+            }
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
 }

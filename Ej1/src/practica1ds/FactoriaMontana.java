@@ -4,13 +4,13 @@ public class FactoriaMontana implements FactoriaCarreraYBicicleta {
 
     @Override
     public Carrera crearCarrera() {
-        CarreraMontana carrera = new CarreraMontana("Montana");
+        CarreraMontana carrera = new CarreraMontana("Montaña");
         return carrera;
     }
 
     @Override
-    public Bicicleta crearBicicleta() {
-        BicicletaMontana bicicleta = new BicicletaMontana("Montana", "id1");
+    public Bicicleta crearBicicleta(String id) {
+        BicicletaMontana bicicleta = new BicicletaMontana("Montaña", id);
         return bicicleta;
     }
 

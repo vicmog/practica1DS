@@ -3,8 +3,8 @@ package practica1ds;
 import java.util.ArrayList;
 
 public abstract class Carrera extends Thread {
-    private String tipo;
-    private ArrayList<Bicicleta> bicicletas;
+    protected String tipo;
+    protected ArrayList<Bicicleta> bicicletas;
 
     public Carrera(String tipo) {
         this.tipo = tipo;
@@ -17,12 +17,12 @@ public abstract class Carrera extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Comienza la carrera de " + tipo);
     }
 
-    private void retirarBicicletaAleatoria() {
+    public void retirarBicicletaAleatoria() {
         int aleatorio = (int) (Math.random() * bicicletas.size());
         bicicletas.remove(aleatorio);
+        System.out.println("Se ha retirado la bicicleta nº: " + aleatorio + " de la carrera de " + tipo + "\n");
     }
 
     public void agregarBicicleta(Bicicleta bicicleta) {
