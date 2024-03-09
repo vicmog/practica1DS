@@ -9,6 +9,9 @@ class Bicicleta(ABC):
 
     def get_identificador(self):
         return self._identificador
-    
+
     def get_tipo(self):
         return self._tipo
+
+    def duplicar(self):
+        return Bicicleta(self._identificador, self._tipo)
