@@ -33,7 +33,7 @@ public class Practica1DS extends Thread {
 
         hiloCarreraMontana.start();
         hiloCarreraCarretera.start();
-
+        
     }
 
 }
