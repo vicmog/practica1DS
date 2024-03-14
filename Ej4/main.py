@@ -1,9 +1,9 @@
-from ui.Salpicadero import App
+from ui.Salpicadero import Salpicadero
 
 
 def main():
-    app = App()
-    app.mainloop()
+    salpicadero = Salpicadero()
+    salpicadero.mainloop()
 
 
 if __name__ == "__main__":
