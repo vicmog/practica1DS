@@ -3,9 +3,10 @@ import customtkinter
 
 
 class Salpicadero(customtkinter.CTkToplevel):
-    def __init__(self, parent, nombre="Salpicadero"):
+    def __init__(self, parent, coche, nombre="Salpicadero"):
         super().__init__(parent)
         self.pressed = False
+        self.coche = coche
 
         self.title(nombre)
         self.geometry("400x150")
@@ -29,6 +30,7 @@ class Salpicadero(customtkinter.CTkToplevel):
 
     def button_callback(self):
         print("button pressed")
+        print(self.coche.estado_motor)
         if self.pressed:
             self.button.configure(
                 text="my button", fg_color="#1e90ff", hover_color="#6ec6ff"

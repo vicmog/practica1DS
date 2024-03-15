@@ -1,19 +1,15 @@
 import customtkinter
+from clases.Coche import Coche
 from ui.Salpicadero import Salpicadero
 from ui.Controles import Controles
-
-import threading
+from clases.Motor import Motor
 
 
 def main():
-    controles = Controles()
+    coche = Coche()
+    print(coche.estado_motor)
 
-    salpicadero = Salpicadero(controles, nombre="Salpicadero")
-    # Asignamos la función de destruir la primera ventana cuando la segunda se elimina,
-    # así conseguimos que se cierren ambas al mismo tiempo
-    salpicadero.protocol("WM_DELETE_WINDOW", controles.destroy)
-
-    controles.mainloop()
+    coche.controles.mainloop()
 
 
 if __name__ == "__main__":

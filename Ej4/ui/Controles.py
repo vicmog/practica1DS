@@ -3,10 +3,11 @@ from clases.Motor import Motor
 
 
 class Controles(customtkinter.CTk):
-    def __init__(self, nombre="Controles", motor=None):
+    def __init__(self, coche, nombre="Controles"):
         super().__init__()
 
         self.title(nombre)
+        self.coche = coche
         # self.geometry("500x150")
         self.grid_columnconfigure(3, weight=1)
 
@@ -32,4 +33,4 @@ class Controles(customtkinter.CTk):
         self.frenarButton.grid(row=1, column=2, padx=20, pady=20, sticky="ew")
 
     def button_callback(self):
-        print("button pressed")
+        self.coche.estado_motor = Motor().ENCENDIDO
