@@ -1,11 +1,11 @@
-class Director:
+class DirectorCasa:
 
     def __init__(self, builder):
-        self._builder = builder
+        self.builder_casa = builder
 
     def construir_casa(self):
-        self._builder.crear_casa()
-        self._builder.aniadir_cocina()
-        self._builder.aniadir_banio()
-        self._builder.aniadir_sala_de_estar()
-        self._builder.aniadir_dormitorio()
+        self.builder_casa.crear_casa()
+        self.builder_casa.aniadir_cocina()
+        self.builder_casa.aniadir_banio()
+        self.builder_casa.aniadir_sala_de_estar()
+        self.builder_casa.aniadir_dormitorio()
