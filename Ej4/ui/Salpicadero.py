@@ -2,9 +2,9 @@ from ctypes import alignment
 import customtkinter
 
 
-class Salpicadero(customtkinter.CTk):
-    def __init__(self, nombre="Salpicadero"):
-        super().__init__()
+class Salpicadero(customtkinter.CTkToplevel):
+    def __init__(self, parent, nombre="Salpicadero"):
+        super().__init__(parent)
         self.pressed = False
 
         self.title(nombre)

@@ -1,22 +1,35 @@
 import customtkinter
+from clases.Motor import Motor
 
 
 class Controles(customtkinter.CTk):
-    def __init__(self, nombre="Controles"):
+    def __init__(self, nombre="Controles", motor=None):
         super().__init__()
 
         self.title(nombre)
-        self.geometry("400x150")
-        self.grid_columnconfigure((0, 1), weight=1)
+        # self.geometry("500x150")
+        self.grid_columnconfigure(3, weight=1)
 
-        self.button = customtkinter.CTkButton(
-            self, text="my button", command=self.button_callback
+        self.frameSuperior = customtkinter.CTkFrame(master=self, height=50)
+        self.frameSuperior.grid(
+            row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=3
         )
-        self.button.grid(row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
-        self.checkbox_1 = customtkinter.CTkCheckBox(self, text="checkbox 1")
-        self.checkbox_1.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="w")
-        self.checkbox_2 = customtkinter.CTkCheckBox(self, text="checkbox 2")
-        self.checkbox_2.grid(row=1, column=1, padx=20, pady=(0, 20), sticky="w")
+        self.estadoLabel = customtkinter.CTkLabel(self.frameSuperior, text="APAGADO")
+
+        self.encenderButton = customtkinter.CTkButton(
+            self, text="Encender", command=self.button_callback
+        )
+        self.encenderButton.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+
+        self.acelerarButton = customtkinter.CTkButton(
+            self, text="Acelerar", command=self.button_callback, state="disabled"
+        )
+        self.acelerarButton.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
+
+        self.frenarButton = customtkinter.CTkButton(
+            self, text="Frenar", command=self.button_callback, state="disabled"
+        )
+        self.frenarButton.grid(row=1, column=2, padx=20, pady=20, sticky="ew")
 
     def button_callback(self):
         print("button pressed")
