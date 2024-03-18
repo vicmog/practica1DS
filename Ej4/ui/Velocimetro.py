@@ -13,3 +13,6 @@ class Velocimetro(customtkinter.CTkFrame):
             self, text=str(self.coche.velocidad) + " km/h"
         )
         self.velocidad.grid(row=1, column=0, sticky="ew", columnspan=2)
+
+    def update(self):
+        self.velocidad.configure(text=str(self.coche.velocidad) + " km/h")

@@ -13,3 +13,6 @@ class Cuentarevoluciones(customtkinter.CTkFrame):
             self, text=str(self.coche.revoluciones) + " rpm"
         )
         self.revoluciones.grid(row=1, column=0, sticky="ew", columnspan=2)
+
+    def update(self):
+        self.revoluciones.configure(text=str(self.coche.revoluciones) + " rpm")
