@@ -6,9 +6,11 @@ from ui.Salpicadero import Salpicadero
 class Coche:
     def __init__(self):
         self.estado_motor = Motor().APAGADO
-        self.controles = Controles(coche=self)
+        self.revoluciones = 0
         self.velocidad = 0
+        self.distancia_recorrida = 0
 
+        self.controles = Controles(coche=self)
         self.salpicadero = Salpicadero(self.controles, nombre="Salpicadero", coche=self)
         # Asignamos la función de destruir la primera ventana cuando la segunda se elimina,
         # así conseguimos que se cierren ambas al mismo tiempo
