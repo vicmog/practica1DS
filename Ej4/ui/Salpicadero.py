@@ -1,5 +1,6 @@
-from ctypes import alignment
 import customtkinter
+
+from ui.Velocimetro import Velocimetro
 
 
 class Salpicadero(customtkinter.CTkToplevel):
@@ -7,11 +8,12 @@ class Salpicadero(customtkinter.CTkToplevel):
         super().__init__(parent)
         self.pressed = False
         self.coche = coche
+        self.velocimetro = Velocimetro(self, coche)
 
         self.title(nombre)
-        self.geometry("400x150")
         self.grid_columnconfigure((0, 1, 2), weight=1)
 
+        self.velocimetro.grid(row=3, column=0,ipadx=20, padx=20, pady=20, sticky="ew", columnspan=3)
         self.button = customtkinter.CTkButton(
             self, text="my button", command=self.button_callback
         )

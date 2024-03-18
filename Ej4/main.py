@@ -1,8 +1,4 @@
-import customtkinter
 from clases.Coche import Coche
-from ui.Salpicadero import Salpicadero
-from ui.Controles import Controles
-from clases.Motor import Motor
 
 
 def main():
