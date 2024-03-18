@@ -5,7 +5,7 @@ class Cuentakilometros(customtkinter.CTkFrame):
     def __init__(self, parent, coche):
         super().__init__(parent)
         self.coche = coche
-        self.grid_columnconfigure((0, 1, 2), weight=1)
+        self.grid_columnconfigure((0, 1), weight=1)
 
         self.label = customtkinter.CTkLabel(self, text="Kilometros")
         self.label.grid(row=0, column=0, sticky="ew", columnspan=2)
@@ -20,4 +20,6 @@ class Cuentakilometros(customtkinter.CTkFrame):
         self.after(1000, self.sumar_kilometros)
 
     def update(self):
-        self.kilometros.configure(text=str(self.coche.distancia_recorrida) + " km")
+        self.kilometros.configure(
+            text="%.3f" % (self.coche.distancia_recorrida) + " km"
+        )

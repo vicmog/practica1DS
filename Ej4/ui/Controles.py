@@ -17,22 +17,30 @@ class Controles(customtkinter.CTk):
         )
         self.frameSuperior.grid_columnconfigure(0, weight=1)
         self.estadoLabel = customtkinter.CTkLabel(
-            self.frameSuperior, text="APAGADO", anchor="center"
+            self.frameSuperior, text="APAGADO", anchor="center", font=("System", 30)
         )
         self.estadoLabel.grid(row=0, column=0, padx=20, pady=20, sticky="ew")
 
+        self.frameInferior = customtkinter.CTkFrame(master=self)
+        self.frameInferior.grid(
+            row=1, column=0, padx=20, pady=20, sticky="ew", columnspan=3
+        )
+        self.frameInferior.grid_columnconfigure(3, weight=1)
+
         self.encenderButton = customtkinter.CTkButton(
-            self, text="Encender", command=self.encender_apagar_motor
+            self.frameInferior,
+            text="Encender",
+            command=self.encender_apagar_motor,
         )
         self.encenderButton.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
 
         self.acelerarButton = customtkinter.CTkButton(
-            self, text="Acelerar", command=self.acelerar, state="disabled"
+            self.frameInferior, text="Acelerar", command=self.acelerar, state="disabled"
         )
         self.acelerarButton.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
 
         self.frenarButton = customtkinter.CTkButton(
-            self, text="Frenar", command=self.frenar, state="disabled"
+            self.frameInferior, text="Frenar", command=self.frenar, state="disabled"
         )
         self.frenarButton.grid(row=1, column=2, padx=20, pady=20, sticky="ew")
         self.update()
@@ -64,10 +72,12 @@ class Controles(customtkinter.CTk):
     def update(self):
         if self.coche.estado_motor == Motor().ENCENDIDO:
             self.estadoLabel.configure(text="ENCENDIDO")
+            self.frameSuperior.configure(fg_color="#2b2b2b")
             self.acelerarButton.configure(text="Acelerar", text_color="white")
             self.frenarButton.configure(text="Frenar", text_color="white")
         elif self.coche.estado_motor == Motor().APAGADO:
             self.estadoLabel.configure(text="APAGADO")
+            self.frameSuperior.configure(fg_color="red")
             self.acelerarButton.configure(text="Acelerar", text_color="white")
             self.frenarButton.configure(text="Frenar", text_color="white")
         elif self.coche.estado_motor == Motor().FRENANDO:
@@ -92,4 +102,4 @@ class Controles(customtkinter.CTk):
         elif self.coche.estado_motor == Motor().ACELERANDO:
             self.estadoLabel.configure(text="ACELERANDO")
 
-        self.after(100, self.update)
+        self.after(500, self.update)
