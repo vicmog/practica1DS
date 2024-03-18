@@ -11,7 +11,6 @@ class Salpicadero(customtkinter.CTkToplevel):
     def __init__(self, parent, coche, nombre="Salpicadero"):
         super().__init__(parent)
         self.geometry("400x300")
-        self.pressed = False
         self.coche = coche
         self.velocimetro = Velocimetro(self, coche)
         self.cuentarevoluciones = Cuentarevoluciones(self, coche)
