@@ -1,7 +1,7 @@
 
 
-from src import BeautifulSoupStrategy
-from src import Context
+from src.beautiful_strategy import BeautifulSoupStrategy
+from src.context import Context
 
 
 def main():

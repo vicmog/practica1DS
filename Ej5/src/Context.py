@@ -1,7 +1,7 @@
 
 class Context:
     def __init__(self, strategy):
-        self.strategy = strategy
+        self._strategy = strategy
 
     def set_strategy(self, strategy):
         self._strategy = strategy

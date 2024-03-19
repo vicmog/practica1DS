@@ -1,5 +1,5 @@
 
-import src as ScrapeStrategy
+from src.scrape_strategy import ScrapeStrategy
 import requests
 
 from bs4 import BeautifulSoup
