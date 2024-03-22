@@ -7,13 +7,14 @@ from selenium.common.exceptions import TimeoutException
 
 from src.scrape_strategy import ScrapeStrategy  # Import for exception handling
 
-OPEN_VALUE_SELECTOR = "td[data-test='OPEN-value']"
-CLOSE_VALUE_SELECTOR = "td[data-test='PREV_CLOSE-value']"
-VOLUME_SELECTOR = "td[data-test='TD_VOLUME-value']"
-MARKET_CAP_SELECTOR = "td[data-test='MARKET_CAP-value']"
-
 
 class SeleniumStrategy(ScrapeStrategy):
+    def __init__(self):
+        self.open_value_selector = "td[data-test='OPEN-value']"
+        self.prev_close_selector = "td[data-test='PREV_CLOSE-value']"
+        self.volume_selector = "td[data-test='TD_VOLUME-value']"
+        self.market_cap_selector = "td[data-test='MARKET_CAP-value']"
+
     def scrape(self, url):
         driver = webdriver.Firefox()
         driver.get(url)
@@ -35,22 +36,22 @@ class SeleniumStrategy(ScrapeStrategy):
         try:
             WebDriverWait(driver, 10).until(
                 expected_conditions.presence_of_element_located(
-                    (By.CSS_SELECTOR, OPEN_VALUE_SELECTOR)
+                    (By.CSS_SELECTOR, self.open_value_selector)
                 )
             )
-            open_value = driver.find_element(By.CSS_SELECTOR, OPEN_VALUE_SELECTOR)
+            open_value = driver.find_element(By.CSS_SELECTOR, self.open_value_selector)
             data["open-value"] = open_value.text
             print(open_value.text)
 
-            close_value = driver.find_element(By.CSS_SELECTOR, CLOSE_VALUE_SELECTOR)
+            close_value = driver.find_element(By.CSS_SELECTOR, self.prev_close_selector)
             data["close-value"] = close_value.text
             print(close_value.text)
 
-            volume = driver.find_element(By.CSS_SELECTOR, VOLUME_SELECTOR)
+            volume = driver.find_element(By.CSS_SELECTOR, self.volume_selector)
             data["volume"] = volume.text
             print(volume.text)
 
-            market_cap = driver.find_element(By.CSS_SELECTOR, MARKET_CAP_SELECTOR)
+            market_cap = driver.find_element(By.CSS_SELECTOR, self.market_cap_selector)
             data["market-cap"] = market_cap.text
             print(market_cap.text)
         except TimeoutException:
