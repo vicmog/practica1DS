@@ -17,16 +17,19 @@ class SeleniumStrategy(ScrapeStrategy):
 
     def scrape(self, url):
         driver = webdriver.Firefox()
+        driver.maximize_window()
         driver.get(url)
         data = {}
 
         # Aceptamos las cookies si es que hay, si no hay, se ignora
         try:
-            WebDriverWait(driver, 10).until(
+            cookies_button = WebDriverWait(driver, 10).until(
                 expected_conditions.presence_of_element_located(
                     (By.CSS_SELECTOR, ".btn.secondary.accept-all")
                 )
-            ).click()
+            )
+            driver.execute_script("arguments[0].scrollIntoView();", cookies_button)
+            cookies_button.click()
         except TimeoutException:
             print("No se ha encontrado el botón de aceptar cookies")
             driver.quit()
