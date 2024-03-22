@@ -1,9 +1,11 @@
+import json
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException  # Import for exception handling
+from selenium.common.exceptions import TimeoutException
+
+from src.scrape_strategy import ScrapeStrategy  # Import for exception handling
 
 OPEN_VALUE_SELECTOR = "td[data-test='OPEN-value']"
 CLOSE_VALUE_SELECTOR = "td[data-test='PREV_CLOSE-value']"
@@ -11,7 +13,7 @@ VOLUME_SELECTOR = "td[data-test='TD_VOLUME-value']"
 MARKET_CAP_SELECTOR = "td[data-test='MARKET_CAP-value']"
 
 
-class SeleniumStrategy:
+class SeleniumStrategy(ScrapeStrategy):
     def scrape(self, url):
         driver = webdriver.Firefox()
         driver.get(url)
@@ -25,15 +27,15 @@ class SeleniumStrategy:
                 )
             ).click()
         except TimeoutException:
-            print("Error: Could not find cookie acceptance button.")
+            print("No se ha encontrado el botón de aceptar cookies")
             driver.quit()
-            return "Error: Accepting cookies failed."
+            return "Error al intentar aceptar las cookies"
 
         # Esperamos a que el elemento que queremos esté presente y entonces lo cogemos. Si no está, se maneja la excepción
         try:
             WebDriverWait(driver, 10).until(
                 expected_conditions.presence_of_element_located(
-                    (By.CSS_SELECTOR, "td[data-test='OPEN-value']")
+                    (By.CSS_SELECTOR, OPEN_VALUE_SELECTOR)
                 )
             )
             open_value = driver.find_element(By.CSS_SELECTOR, OPEN_VALUE_SELECTOR)
@@ -52,7 +54,8 @@ class SeleniumStrategy:
             data["market-cap"] = market_cap.text
             print(market_cap.text)
         except TimeoutException:
-            print("Error: Could not find target element.")
+            print("No se ha encontrado un elemento en la página")
         finally:
+            json.dump(data, open("data-selenium.json", "w"))
             driver.quit()
-            return "Consulta hecha"  # Adjust return message if needed
+            return "Consulta hecha"
